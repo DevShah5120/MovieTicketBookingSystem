@@ -1,0 +1,109 @@
+# MovieTicketBookingSystem
+import java.awt.*;
+import java.awt.event.*;
+
+class project
+{
+	project()
+	{
+		Frame f1 = new Frame("Project");
+		f1.addWindowListener (new WindowAdapter() 
+		{    
+            public void windowClosing (WindowEvent e) 
+            {    
+                f1.dispose();    
+            }    
+        });    
+
+		Label l1 = new Label("Enter Number of Tickets: ");
+		l1.setBounds(100,75,150,30);
+
+		TextField t1 = new TextField();
+		t1.setBounds(250,75,100,25);
+
+		Label l3 = new Label("Choose Movie: ");
+		l3.setBounds(100,150,100,30);
+
+		Choice l2 = new Choice();
+		l2.setBounds(200,150,150,30);
+
+		l2.add("Thank God - 190");
+		l2.add("Kantara - 210");
+		l2.add("Unchai - 170");
+
+		Label l4 = new Label();
+		l4.setBounds(150,225,200,40);
+
+		Button b1 = new Button("Generate Bill");
+		b1.setBounds(100,300,100,35);
+
+		 b1.addActionListener(new ActionListener() 
+		 {    
+            public void actionPerformed(ActionEvent e) 
+            {         
+            	try
+            	{
+            	String no = t1.getText();
+            	int tic = Integer.parseInt(no);
+
+            	int ind = l2.getSelectedIndex();
+
+            	if(tic>0)
+            	{
+	            	if(ind==0)
+	            	{
+	            		int calc = 190 * tic;
+	            		double gst = calc * 0.05;
+	            		double amt = calc + gst;
+	            		l4.setText("Final Amount to be Paid : "+amt);
+	            	}
+	            	else if(ind==1)
+	            	{
+	            		int calc = 210 * tic;
+	            		double gst = calc * 0.05;
+	            		double amt = calc + gst;
+	            		l4.setText("Final Amount to be Paid : "+amt);
+	            	}
+	            	else if(ind==2)
+	            	{
+	            		int calc = 170 * tic;
+	            		double gst = calc * 0.05;
+	            		double amt = calc + gst;
+	            		l4.setText("Final Amount to be Paid : "+amt);
+	            	}
+	            	else if(ind==-1)
+	            	{
+	            		l4.setText("Please Choose Movie Name");
+	            	}
+	            }
+	            else
+	            {
+	            	l4.setText("Ticket Count Should be More than 0");
+	            }
+	           }catch(Exception ex)
+	           {
+	           		l4.setText("Ticket Count Should be More than 0");	
+	           }
+        	}    
+        });             
+
+
+		f1.add(l1);
+		f1.add(t1);S
+		f1.add(l3);
+		f1.add(l2);
+		f1.add(l4);
+		f1.add(b1);
+
+
+		f1.setSize(600,600);
+		f1.setLayout(null);
+		f1.setVisible(true);
+
+	}
+
+	public static void main(String args[])
+	{
+		new project();
+	}
+}
